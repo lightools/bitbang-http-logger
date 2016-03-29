@@ -115,6 +115,11 @@ $logger->registerFormatter($xmlFormatter);
 Logged HTTP headers may not contain all really sent headers
 because some of them might be modified by proxies or even by curl library itself (e.g. very handy CURLOPT_ENCODING).
 
+## Multiple HTTP clients
+
+If you are using bitbang clients in more services (for example [lightools/fio](https://github.com/lightools/fio) and [lightools/ares](https://github.com/lightools/ares)),
+and you don't want to store all logs in the same folder, custom IWriter or some HttpLoggerFactory and HttpClientFactory might be handy.
+
 ## How to run tests
 
 ```sh
