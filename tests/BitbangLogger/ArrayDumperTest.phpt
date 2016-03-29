@@ -29,14 +29,12 @@ class ArrayDumperTest extends TestCase {
         $dumper = new ArrayDumper($indent);
         $result = $dumper->toString($data);
 
-        $expected = <<<EOS
-key1 => value
-key2 =>
-  deepkey1 => deepvalue
-  deepkey2 => 
-    0 => deepdeepvalue
+        $expected = "key1 => value\n";
+        $expected .= "key2 => \n";
+        $expected .= "  deepkey1 => deepvalue\n";
+        $expected .= "  deepkey2 => \n";
+        $expected .= "    0 => deepdeepvalue\n";
 
-EOS;
         Assert::same($expected, $result);
     }
 
