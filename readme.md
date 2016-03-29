@@ -1,6 +1,6 @@
 ## Introduction
 
-This library allows you to log all HTTP traffic performed via clients in bitbang/http library.
+This library allows you to log all HTTP traffic performed via clients in [bitbang/http](https://github.com/bitbang/http) library.
 
 ## Installation
 
