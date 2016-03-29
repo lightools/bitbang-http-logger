@@ -1,0 +1,23 @@
+{
+    "name": "lightools/bitbang-http-logger",
+    "description": "Logger for HTTP requests and responses performed via bitbang/http library.",
+    "license": ["MIT"],
+    "require": {
+        "php": ">=5.4",
+        "bitbang/http": "~0.3.0"
+    },
+    "require-dev": {
+        "php": ">=5.5",
+        "lightools/xml": "~1.0.0",
+        "mockery/mockery": "~0.9.4",
+        "nette/tester": "~1.7.1",
+        "nette/utils": "~2.3.7"
+    },
+    "suggest": {
+        "lightools/xml": "Allows you to use XmlFormatter.",
+        "nette/utils": "Allows you to use JsonFormatter."
+    },
+    "autoload": {
+        "classmap": ["src/"]
+    }
+}
