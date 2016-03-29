@@ -3,7 +3,7 @@
 namespace Lightools\BitbangLogger\Formatters;
 
 use Bitbang\Http\Message;
-use Lightools\BitbangLogger\PostDataDumper;
+use Lightools\BitbangLogger\ArrayDumper;
 
 /**
  * @author Jan Nedbal
@@ -11,12 +11,12 @@ use Lightools\BitbangLogger\PostDataDumper;
 class UrlEncodedFormatter implements IFormatter {
 
     /**
-     * @var PostDataDumper
+     * @var ArrayDumper
      */
-    private $postDataDumper;
+    private $arrayDumper;
 
-    public function __construct(PostDataDumper $arrayDumper) {
-        $this->postDataDumper = $arrayDumper;
+    public function __construct(ArrayDumper $arrayDumper) {
+        $this->arrayDumper = $arrayDumper;
     }
 
     /**
@@ -36,7 +36,7 @@ class UrlEncodedFormatter implements IFormatter {
     public function format($body) {
         $data = [];
         parse_str($body, $data);
-        return $this->postDataDumper->toString($data);
+        return $this->arrayDumper->toString($data);
     }
 
 }

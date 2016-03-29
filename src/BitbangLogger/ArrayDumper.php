@@ -2,12 +2,10 @@
 
 namespace Lightools\BitbangLogger;
 
-use CURLFile;
-
 /**
  * @author Jan Nedbal
  */
-class PostDataDumper {
+class ArrayDumper {
 
     /**
      * @var string
@@ -22,7 +20,6 @@ class PostDataDumper {
     }
 
     /**
-     * Dump classic POST data as array (CURLFile handling included)
      * @param array $data
      * @param int $indent Level of current dump
      * @return string
@@ -36,10 +33,6 @@ class PostDataDumper {
 
             if (is_array($value)) {
                 $content .= $prefix . "\n" . $this->toString($value, $indent + 1);
-
-            } elseif ($value instanceof CURLFile) {
-                $content .= $prefix . file_get_contents($value->getFilename()) . "\n";
-
             } else {
                 $content .= $prefix . $value . "\n";
             }

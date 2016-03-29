@@ -3,7 +3,8 @@
 namespace Lightools\BitbangLogger\Formatters;
 
 use Bitbang\Http\Message;
-use Lightools\BitbangLogger\PostDataDumper;
+use CURLFile;
+use Lightools\BitbangLogger\ArrayDumper;
 
 /**
  * @author Jan Nedbal
@@ -11,12 +12,12 @@ use Lightools\BitbangLogger\PostDataDumper;
 class ArrayFormatter implements IFormatter {
 
     /**
-     * @var PostDataDumper
+     * @var ArrayDumper
      */
-    private $postDataDumper;
+    private $arrayDumper;
 
-    public function __construct(PostDataDumper $arrayDumper) {
-        $this->postDataDumper = $arrayDumper;
+    public function __construct(ArrayDumper $arrayDumper) {
+        $this->arrayDumper = $arrayDumper;
     }
 
     /**
@@ -33,7 +34,12 @@ class ArrayFormatter implements IFormatter {
      * @return string
      */
     public function format($body) {
-        return $this->postDataDumper->toString($body);
+        array_walk_recursive($body, function (& $value) {
+            if ($value instanceof CURLFile) {
+                $value = file_get_contents($value->getFilename());
+            }
+        });
+        return $this->arrayDumper->toString($body);
     }
 
 }

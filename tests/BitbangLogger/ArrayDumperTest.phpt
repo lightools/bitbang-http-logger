@@ -2,7 +2,7 @@
 
 namespace Lightools\Tests;
 
-use Lightools\BitbangLogger\PostDataDumper;
+use Lightools\BitbangLogger\ArrayDumper;
 use Tester\Assert;
 use Tester\TestCase;
 
@@ -12,7 +12,7 @@ require __DIR__ . '/../bootstrap.php';
  * @testCase
  * @author Jan Nedbal
  */
-class PostDataDumperTest extends TestCase {
+class ArrayDumperTest extends TestCase {
 
     public function testDump() {
         $data = [
@@ -26,12 +26,12 @@ class PostDataDumperTest extends TestCase {
         ];
 
         $indent = '  ';
-        $dumper = new PostDataDumper($indent);
+        $dumper = new ArrayDumper($indent);
         $result = $dumper->toString($data);
 
         $expected = <<<EOS
 key1 => value
-key2 => 
+key2 =>
   deepkey1 => deepvalue
   deepkey2 => 
     0 => deepdeepvalue
@@ -42,4 +42,4 @@ EOS;
 
 }
 
-(new PostDataDumperTest)->run();
+(new ArrayDumperTest)->run();

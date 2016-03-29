@@ -3,8 +3,8 @@
 namespace Lightools\Tests;
 
 use Bitbang\Http\Message;
+use Lightools\BitbangLogger\ArrayDumper;
 use Lightools\BitbangLogger\Formatters\UrlEncodedFormatter;
-use Lightools\BitbangLogger\PostDataDumper;
 use Mockery;
 use Tester\Assert;
 use Tester\TestCase;
@@ -30,7 +30,7 @@ class UrlEncodedFormatterTest extends TestCase {
         $stringMessage2->shouldReceive('getBody')->once()->andReturn('a=b');
         $stringMessage2->shouldReceive('getHeader')->once()->with('content-type')->andReturn('application/x-www-form-urlencoded; charset=UTF-8');
 
-        $dumper = Mockery::mock(PostDataDumper::class);
+        $dumper = Mockery::mock(ArrayDumper::class);
         $formatter = new UrlEncodedFormatter($dumper);
 
         Assert::false($formatter->canFormat($arrayMessage));
@@ -47,7 +47,7 @@ class UrlEncodedFormatterTest extends TestCase {
         ];
         $body = http_build_query($array);
 
-        $dumper = Mockery::mock(PostDataDumper::class);
+        $dumper = Mockery::mock(ArrayDumper::class);
         $dumper->shouldReceive('toString')->once()->with($array)->andReturn('dummy');
         $formatter = new UrlEncodedFormatter($dumper);
 
