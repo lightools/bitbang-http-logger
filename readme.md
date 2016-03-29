@@ -95,7 +95,7 @@ Here is example how to use all default formatters:
 
 ```php
 $xmlLoader = new Lightools\Xml\XmlLoader();
-$arrayDumper = new Lightools\BitbangLogger\PostDataDumper();
+$arrayDumper = new Lightools\BitbangLogger\ArrayDumper();
 
 $arrayFormatter = new Lightools\BitbangLogger\Formatters\ArrayFormatter($arrayDumper);
 $urlFormatter = new Lightools\BitbangLogger\Formatters\UrlEncodedFormatter($arrayDumper);
