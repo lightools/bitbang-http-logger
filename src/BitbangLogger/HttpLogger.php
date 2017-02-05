@@ -38,7 +38,7 @@ class HttpLogger {
     }
 
     /**
-     * @param Request
+     * @param Request $request
      */
     public function onRequest(Request $request) {
         $http = $request->getMethod() . ' ' . $request->getUrl() . ' HTTP/1.1';
