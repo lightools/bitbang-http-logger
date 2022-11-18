@@ -4,7 +4,7 @@
     "license": ["MIT"],
     "require": {
         "php": ">=5.4",
-        "bitbang/http": "~0.3.0"
+        "bitbang/http": "~0.3"
     },
     "require-dev": {
         "php": ">=5.5",
